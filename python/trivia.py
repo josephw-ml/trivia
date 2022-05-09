@@ -6,23 +6,23 @@ class Game:
         self.places = [0] * 6
         self.purses = [0] * 6
         self.in_penalty_box = [0] * 6
-        
+
         self.pop_questions = []
         self.science_questions = []
         self.sports_questions = []
         self.rock_questions = []
-        
+
         self.current_player = 0
         self.is_getting_out_of_penalty_box = False
-        
+
         for i in range(50):
-            self.pop_questions.append("Pop Question %s" % i)
-            self.science_questions.append("Science Question %s" % i)
-            self.sports_questions.append("Sports Question %s" % i)
+            self.pop_questions.append(f"Pop Question {i}")
+            self.science_questions.append(f"Science Question {i}")
+            self.sports_questions.append(f"Sports Question {i}")
             self.rock_questions.append(self.create_rock_question(i))
     
     def create_rock_question(self, index):
-        return "Rock Question %s" % index
+        return f"Rock Question {index}"
     
     def is_playable(self):
         return self.how_many_players >= 2
@@ -140,7 +140,7 @@ class Game:
         return True
     
     def _did_player_win(self):
-        return not (self.purses[self.current_player] == 6)
+        return self.purses[self.current_player] != 6
 
 
 from random import randrange
